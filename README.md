@@ -20,7 +20,6 @@ This project provides a complete training framework supporting:
 - **Memory Management Tools**: Agents can actively edit context through tool calls
 - **Multi-turn Conversations**: Support for long-horizon multi-turn interactions
 - **Tool Integration**: Built-in search tools and context pruning tools
-- **Distributed Training**: Ray-based distributed training support
 
 ## 🏗️ Project Structure
 
