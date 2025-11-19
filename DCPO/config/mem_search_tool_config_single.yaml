@@ -1,0 +1,54 @@
+tools:
+  - class_name: Mem.tools.search_tool_single.SearchTool
+    config:
+      retrieval_service_url: http://x.x.x.x:8000/retrieve
+      num_workers: 120
+      rate_limit: 120
+      timeout: 15
+      type: native
+    tool_schema:
+      type: function
+      function:
+        name: search
+        description: Searches the web for relevant information based on the given query.
+        parameters:
+          type: object
+          properties:
+            query:
+              type: string
+              description: A fully-formed semantic query to search for relevant information.
+            topk:
+              type: integer
+              description: The number of results to return.
+              default: 5
+          required: ["query", "topk"]
+          additionalProperties: false
+
+  - class_name: Mem.tools.prune_context.PruneContextTool
+    config:
+      type: native
+    tool_schema:
+      type: function
+      function:
+        name: prune_context
+        description: |
+          Manages conversation history by removing redundant or superseded tool calls while preserving essential information. Use this tool to maintain context efficiency when the conversation becomes too long or contains outdated information.
+          
+          When to use: Context exceeds token limits, information is superseded by newer results, or completed investigations need archival.
+          
+          Process: First summarize key outcomes in `memory`, then specify which tool call IDs to remove via `delete_ids`. Always ensure critical information is captured in memory before deletion.
+        parameters:
+          type: object
+          properties:
+            memory: 
+              type: string
+              description: |
+                Detailed summary of key facts and current status from the tool calls being removed. Must contain sufficient information to continue reasoning without the deleted history. Include verified facts, current state, and any important decisions or references.
+            delete_ids: 
+              type: array
+              items: 
+                type: string
+              description: | 
+                Must not be empty. List of tool call IDs to remove from conversation history. These should be redundant, superseded, or completed tool calls whose information is now captured in the memory summary.
+          required: ["memory", "delete_ids"]
+          additionalProperties: false
