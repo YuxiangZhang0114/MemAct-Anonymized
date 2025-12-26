@@ -1,8 +1,5 @@
 # Memory-as-Action: DCPO Training Framework
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
-**Paper**: [Memory as Action: Autonomous Context Curation for Long-Horizon Agentic Tasks](https://arxiv.org/abs/2510.12635)
 
 A reinforcement learning training framework based on **verl 0.5.0**, implementing the **Dynamic Context Policy Optimization (DCPO)** algorithm for training agents that can autonomously manage context.
 
@@ -135,18 +132,6 @@ python3 -m verl.trainer.main_ppo \
 - **verl**: https://github.com/volcengine/verl (version 0.5.0)
 - Training is based on verl's PPO framework, using DCPO as the advantage estimator
 
-## 📄 Citation
-
-If you use this project, please cite our paper:
-
-```bibtex
-@article{zhang2025memory,
-  title={Memory as Action: Autonomous Context Curation for Long-Horizon Agentic Tasks},
-  author={Zhang, Yuxiang and Shu, Jiangming and Ma, Ye and Lin, Xueyuan and Wu, Shangxi and Sang, Jitao},
-  journal={arXiv preprint arXiv:2510.12635},
-  year={2025}
-}
-```
 
 ## 📄 License
 
